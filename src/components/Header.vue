@@ -13,6 +13,15 @@
           {{ nav.name }}
         </RouterLink>
       </div>
+      <router-link
+        to="login" 
+        class="btn btn-success btn-sm"
+        v-if="$store.state.userId===''">로그인</router-link>
+      <router-link 
+        to="logout" 
+        class="btn btn-danger btn-sm" 
+        @click="handleLogOut" 
+        v-if="$store.state.userId!==''">로그아웃</router-link>
     </div>
   </header>
 </template>
@@ -22,6 +31,11 @@ import Logo from "~/components/Logo"
 export default {
   components: {
     Logo
+  },
+  methods:{
+    handleLogOut(){
+      this.$store.dispatch('deleteAuth');
+    }
   },
   data() {
     return {

@@ -19,5 +19,9 @@ export default createRouter({
       path: '/about',
       component: About
     },
+    {
+      path: '/login',
+      component: () => import('./Login.vue')
+    },
   ]
 })
