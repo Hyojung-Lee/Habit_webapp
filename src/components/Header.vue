@@ -13,10 +13,12 @@
           {{ nav.name }}
         </RouterLink>
       </div>
+    </div>
+    <div class="account">
       <router-link
         to="login" 
         class="btn btn-success btn-sm"
-        v-if="$store.state.userId===''">로그인</router-link>
+        v-if="$store.state.userId===''">로그인하기</router-link>
       <router-link 
         to="logout" 
         class="btn btn-danger btn-sm" 
@@ -78,6 +80,22 @@ export default {
     }
     .nav {
       position: relative;
+    }
+    .account {
+      position: absolute;
+      right: 40px;
+      .btn {
+        background-color: #fff;
+        color: $gray-500;
+        border: 1px solid $gray-500;
+        border-radius: 12px;
+        transition: .3s;
+        padding: 8px 16px;
+        &:hover {
+          background-color: #222;
+          color: $white;
+        }
+      }
     }
   }
 </style>

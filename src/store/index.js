@@ -29,11 +29,11 @@ export default createStore({
   },
   actions:{
     saveAuth(context, payload){ // payload = {userId: xxx, authToken: xxxx}
-
+    
       // 상태 저장
       context.commit("setUserId", payload.userId);
       context.commit("setAuthToken", payload.authToken);
-
+    
       // 브라우저 리프레쉬때 다시 로딩하기 위해 세션 스토리지에 저장
       sessionStorage.setItem("userId", payload.userId);
       sessionStorage.setItem("authToken", payload.authToken);

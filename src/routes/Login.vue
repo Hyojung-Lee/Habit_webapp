@@ -1,13 +1,13 @@
 <!-- 컴포넌트 ui 정의 -->
 <!-- root element가 하나만 있어야함 -->
 <template>
-  <div>
-    <h1>Login</h1>
+  <Headline />
+  <div class="login-form">
       <div class="form-group">
-        <input type="text" class="form-control" v-model="user.id"/>
+        <input type="text" placeholder="아이디를 입력하세요" class="form-control" v-model="user.id"/>
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" v-model="user.password"/>
+        <input type="password" placeholder="비밀번호를 입력하세요" class="form-control" v-model="user.password"/>
       </div>
       <button  class="btn btn-primary" v-on:click="handleLogin">로그인</button>
       <alert-dialog :message="alertDialogMessage" :loading="loading" v-if="alertDialog" @close="alertDialog = false" />
@@ -17,13 +17,15 @@
 <script>
 import auth from "../apis/auth";
 import AlertDialog from "../components/dialog/AlertDialog.vue";
+import Headline from '~/components/Headline';
 
 export default {
   // 컴포넌트의 대표이름(devtools에 나오는 이름)
   name : "Login",
   // 추가하고 싶은 컴포넌트를 등록
   components:{
-    AlertDialog
+    Headline,
+    AlertDialog,
   },
   //컴포넌트에서 사용하는 데이터를 정의
   // return 값이 되려면 괄호로 감싸야함
@@ -64,6 +66,19 @@ export default {
 }
 </script>
 <!-- 컴포넌트 -->
-<style scoped>
+<style lang="scss" scoped>
+  .login-form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 40vh;
+    left: 50vh;
+    .form-group {
+      width: 30vh;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+  }
 
 </style>

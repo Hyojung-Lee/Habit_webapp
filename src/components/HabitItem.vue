@@ -4,15 +4,15 @@
     @mouseover="hover = true"
     @mouseleave="hover = false">
     <div class="top">
-      <h4 class="title">{{ habit.Title }}</h4>
+      <h6 class="title">{{ habit.Title }}</h6>
       <h6 class="streak">
-        <!-- <img class="glitter" src="../assets/glitter.svg" alt=""> -->
+        <img class="glitter" src="../assets/glitter.svg" alt="">
         {{ habit.Year }}회 연속
       </h6>
     </div>
     <div v-if="hover" class="info">{{ habit.Type }}</div>
     <div v-if="hover" class="participants">{{  habit.Year }}</div>
-    <button v-if="hover" class="done">완료했어요</button>
+    <button  class="done">완료했어요</button>
   </div>
 </template>
 
