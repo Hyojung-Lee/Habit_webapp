@@ -71,12 +71,10 @@ export default {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 40vh;
-    left: 50vh;
+    top: 30vh;
+    right: 40px;
     .form-group {
       width: 30vh;
-      justify-content: center;
-      align-items: center;
       margin-bottom: 6px;
     }
   }

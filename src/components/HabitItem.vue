@@ -10,9 +10,24 @@
         {{ habit.Year }}회 연속
       </h6>
     </div>
-    <div v-if="hover" class="info">{{ habit.Type }}</div>
-    <div v-if="hover" class="participants">{{  habit.Year }}</div>
-    <button  class="done">완료했어요</button>
+    <div class="row">
+      <div v-if="hover" class="block info">{{ habit.Type }}</div>
+      <div v-if="hover" class="block participants">{{  habit.Year }}</div>
+    </div>
+    <div v-if="hover" class="status">
+      <div class="status-title">최근진행</div>
+      <ul class="list-group list-group-horizontal">
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+      </ul>
+      <div class="status-title">완료율</div>
+    </div>
+    <button class="done">완료했어요</button>
   </div>
 </template>
 
@@ -48,14 +63,22 @@ export default {
     transition: .1s;
     &:hover {
       box-shadow: 0 0px 2px 0 rgb(0, 0, 0, .3);
-      height: 132px;
+      height: 172px;
     }
     .streak {
       color: #4663F6;
-      
+    }
+
+    .row{
+      width: 100%;
+      text-align: left;
+    }
+    .block{
+      width: 60px;
+      display: inline-block;
     }
     .info {
-      color: #4663F6;
+      color: #999;
     }
     .participants {
       color: #999;
@@ -74,6 +97,21 @@ export default {
         background-color: $primary;
         color: #fff;
       }
+    }
+    .status {
+      margin-top: 16px;
+      color: #999;
+      .status-title {
+        font-size: 14px;
+      }
+    }
+
+    .list-group-item {
+      border-radius: 20px;
+      margin-left: 4px;
+      font-size: 12px;
+      padding: 5px 10px;
+      color: #999
     }
   }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <h1>웹에서도 습관을 확인하세요</h1>
+    <img class="illust" src="../assets/headline2.png" alt="headline1img">
+    <h2>습관을<br>확인하세요.</h2>
     <p>HABITS로 새로운 습관을 성공적으로 들여보세요!</p>
+    
   </div>
 </template>
 
@@ -9,19 +11,31 @@
 @import "~/scss/main";
 
   .container {
-    padding-top: 20vh;
+    position: fixed;
+    margin-top: 20vh;
+    margin-left: 24px;
   }
 
-  h1 {
+  h2 {
+    margin-top: 5vh;
     line-height: 1.1;
-    font-size: 60px;
+    font-size: 56px;
     font-weight: 700;
-    color: $primary;
-    text-align: center;
+    color: $gray-900;
+    text-align: left;
   }
   p {
     margin: 30px 0;
     color: $gray-600;
-    text-align: center;
+    text-align: left;
+  }
+  .glitter {
+    width: 20px;
+  }
+
+  .illust {
+    z-index: -1;
+    position: absolute;
+    left: -2vw;
   }
 </style>

@@ -39,8 +39,8 @@ export default {
 .inner {   
     display: flex;
     position: absolute;
-    left: 50%;
-    right: 50%;
+    // left: 50%;
+    right: 0;
     flex-direction: column;
     align-items: center;
     top: 120px;

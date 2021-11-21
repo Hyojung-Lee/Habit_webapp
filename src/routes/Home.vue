@@ -1,5 +1,5 @@
 <template>
-  <!-- <Headline /> -->
+  <Headline />
   <HabitList />
 </template>
 
