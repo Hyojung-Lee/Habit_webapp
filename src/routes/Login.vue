@@ -1,7 +1,8 @@
 <!-- 컴포넌트 ui 정의 -->
 <!-- root element가 하나만 있어야함 -->
 <template>
-  <Headline />
+  <Logo />
+  <LoginHead />
   <div class="login-form">
       <div class="form-group">
         <input type="text" placeholder="아이디를 입력하세요" class="form-control" v-model="user.id"/>
@@ -17,14 +18,16 @@
 <script>
 import auth from "../apis/auth";
 import AlertDialog from "../components/dialog/AlertDialog.vue";
-import Headline from '~/components/Headline';
+import Logo from '~/components/Logo';
+import LoginHead from '~/components/LoginHead';
 
 export default {
   // 컴포넌트의 대표이름(devtools에 나오는 이름)
   name : "Login",
   // 추가하고 싶은 컴포넌트를 등록
   components:{
-    Headline,
+    Logo,
+    LoginHead,
     AlertDialog,
   },
   //컴포넌트에서 사용하는 데이터를 정의
@@ -67,15 +70,27 @@ export default {
 </script>
 <!-- 컴포넌트 -->
 <style lang="scss" scoped>
+@import "~/scss/main";
+  .logo {
+    position: absolute;
+    bottom: 4vh;
+    width: 80px;
+    left: 50%;
+    margin-left: -40px;
+    font-weight: 700;
+    text-align: center;
+    color: $primary;
+  }
   .login-form {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 30vh;
-    right: 40px;
+    width: 300px;
+    top: 46vh;
+    left: 20%;
     .form-group {
-      width: 30vh;
       margin-bottom: 6px;
+      background-color: none;
     }
   }
 
