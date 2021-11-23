@@ -17,7 +17,6 @@
   }
 
   h2 {
-    margin-top: 5vh;
     line-height: 1.1;
     font-size: 56px;
     font-weight: 700;

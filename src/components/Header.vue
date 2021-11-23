@@ -47,10 +47,6 @@ export default {
           href: '/'
         },
         {
-          name: 'Calendar',
-          href: '/calendar'
-        },
-        {
           name: 'About',
           href: '/about'
         },

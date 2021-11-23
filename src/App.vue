@@ -22,5 +22,4 @@ export default {
 .header {
   z-index: 5;
 }
-
 </style>
