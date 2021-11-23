@@ -20,9 +20,9 @@
         class="btn btn-success btn-sm"
         v-if="$store.state.userId===''">로그인하기</router-link>
       <router-link 
-        to="logout" 
+        to="logout"
         class="btn btn-danger btn-sm" 
-        @click="handleLogOut" 
+        @click="handleLogOut"
         v-if="$store.state.userId!==''">로그아웃</router-link>
     </div>
   </header>
@@ -37,6 +37,7 @@ export default {
   methods:{
     handleLogOut(){
       this.$store.dispatch('deleteAuth');
+      this.$router.push("/login");
     }
   },
   data() {

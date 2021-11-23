@@ -1,6 +1,10 @@
 <template>
-  <Header class="header"/>
+<v-template>
+  <div v-if="$store.state.userId !=='' ">
+    <Header class="header"/>
+  </div>
   <RouterView />
+</v-template>
 </template>
 
 <script>
