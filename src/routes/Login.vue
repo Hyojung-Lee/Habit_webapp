@@ -1,6 +1,7 @@
 <!-- 컴포넌트 ui 정의 -->
 <!-- root element가 하나만 있어야함 -->
 <template>
+  <div class="background"></div>
   <Logo />
   <LoginHead />
   <div class="login-form">
@@ -104,6 +105,13 @@ export default {
 <!-- 컴포넌트 -->
 <style lang="scss" scoped>
 @import "~/scss/main";
+  .background {
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(252,253,252,1);
+  }
   .logo {
     position: absolute;
     bottom: 4vh;
@@ -130,7 +138,7 @@ export default {
     display: flex;
     flex-direction: column;
     width: 300px;
-    top: 50%;
+    top: 46%;
     margin-top: -150px;
     height: 300px;
     left: 20%;
