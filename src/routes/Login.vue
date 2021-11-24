@@ -10,12 +10,14 @@
       </div>
 
       <div class="form-group">
-        <input type="text" placeholder="email@example.com" class="form-control" v-model="user.id"/>
+        <img v-if="emailValidated" src="../assets/check_valid.png" alt="validated" class="validate">
+        <img v-else src="../assets/check_invalid.png" alt="validated" class="validate">
+        <input type="text" placeholder="email@example.com" class="form-control" v-model="user.id" />
       </div>
       <div class="form-group">
         <input type="password" placeholder="비밀번호 입력" class="form-control" v-model="user.password"/>
       </div>
-      <button  class="btn btn-primary" v-on:click="handleLogin">로그인</button>
+      <button :disabled='loginDisabled' class="btn btn-primary" v-on:click="handleLogin">로그인</button>
       <alert-dialog :message="alertDialogMessage" :loading="loading" v-if="alertDialog" @close="alertDialog = false" />
   </div>
 </template>
@@ -45,7 +47,18 @@ export default {
       },
       alertDialog :false,
       alertDialogMessage : "",
-      loginActive : false,
+      emailValidated : false,
+      loginDisabled : true,
+    }
+  },
+  watch: {
+    //input form 양식 변화 감시
+    user: {
+      deep: true,
+      handler(value){
+        console.log(value);
+        this.validateLogin(value);
+      }
     }
   },
   //컴포넌트에서 사용하는 메소드 정의
@@ -71,12 +84,18 @@ export default {
     handleLogout(){
       this.$store.dispatch("removeAuth");
     },
-    inputFill(){
-      if(this.user.id != "" && this.user.password != "" ){
-        console.log("Login Active")
-        this.loginActive = true;
-      }else {
-        this.loginActive = false;
+    //로그인 input form 양식 확인
+    validateLogin(value){
+      if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value.id)){
+        this.emailValidated = true;
+      }else{
+        this.emailValidated = false;
+      }
+      if (this.emailValidated == true && value.password.toString().length >= 4) {
+        console.log("로그인 버튼 누를 수 있음");
+        this.loginDisabled = false;
+      }else{
+        this.loginDisabled = true;
       }
     }
   }
@@ -118,6 +137,15 @@ export default {
     .form-group {
       margin-bottom: 6px;
       background-color: none;
+      position: relative;
+      .validate {
+        transition: .2s;
+        position: absolute;
+        height: 16px;
+        top: 50%;
+        margin-top: -8px;
+        right: 12px;
+      }
     }
   }
 
