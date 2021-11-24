@@ -4,11 +4,16 @@
   <Logo />
   <LoginHead />
   <div class="login-form">
+      <div class="titles">
+        <h2>로그인해서<br>습관을 확인하세요.</h2>
+        <p>HABITS로 새로운 습관을 성공적으로 들여보세요!</p>
+      </div>
+
       <div class="form-group">
-        <input type="text" placeholder="아이디를 입력하세요" class="form-control" v-model="user.id"/>
+        <input type="text" placeholder="email@example.com" class="form-control" v-model="user.id"/>
       </div>
       <div class="form-group">
-        <input type="password" placeholder="비밀번호를 입력하세요" class="form-control" v-model="user.password"/>
+        <input type="password" placeholder="비밀번호 입력" class="form-control" v-model="user.password"/>
       </div>
       <button  class="btn btn-primary" v-on:click="handleLogin">로그인</button>
       <alert-dialog :message="alertDialogMessage" :loading="loading" v-if="alertDialog" @close="alertDialog = false" />
@@ -40,6 +45,7 @@ export default {
       },
       alertDialog :false,
       alertDialogMessage : "",
+      loginActive : false,
     }
   },
   //컴포넌트에서 사용하는 메소드 정의
@@ -64,6 +70,14 @@ export default {
     },
     handleLogout(){
       this.$store.dispatch("removeAuth");
+    },
+    inputFill(){
+      if(this.user.id != "" && this.user.password != "" ){
+        console.log("Login Active")
+        this.loginActive = true;
+      }else {
+        this.loginActive = false;
+      }
     }
   }
 }
@@ -81,12 +95,25 @@ export default {
     text-align: center;
     color: $primary;
   }
+  h2 {
+    line-height: 1.1;
+    font-size: 32px;
+    font-weight: 700;
+    color: $gray-900;
+  }
+  p {
+    margin: 30px 0;
+    font-size: 15px;
+    color: $gray-600;
+  }
   .login-form {
     position: absolute;
     display: flex;
     flex-direction: column;
     width: 300px;
-    top: 46vh;
+    top: 50%;
+    margin-top: -150px;
+    height: 300px;
     left: 20%;
     .form-group {
       margin-bottom: 6px;
