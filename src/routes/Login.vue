@@ -19,6 +19,7 @@
         <input type="password" placeholder="비밀번호 입력" class="form-control" v-model="user.password"/>
       </div>
       <button :disabled='loginDisabled' class="btn btn-primary" v-on:click="handleLogin">로그인</button>
+      <button class="btn btn-sub" >회원가입</button>
       <alert-dialog :message="alertDialogMessage" :loading="loading" v-if="alertDialog" @close="alertDialog = false" />
   </div>
 </template>
@@ -120,7 +121,7 @@ export default {
     margin-left: -40px;
     font-weight: 700;
     text-align: center;
-    color: $primary;
+    color: $gray-400;
   }
   h2 {
     line-height: 1.1;
@@ -153,6 +154,15 @@ export default {
         top: 50%;
         margin-top: -8px;
         right: 12px;
+      }
+    }
+    .btn-sub {
+      margin-top: 6px;
+      border: .5px solid $gray-300;
+      color: $gray-700;
+      &:hover {
+        border: .5px solid $gray-700;
+        color: $gray-700;
       }
     }
   }
