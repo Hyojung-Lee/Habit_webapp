@@ -4,30 +4,21 @@
     @mouseover="hover = true"
     @mouseleave="hover = false">
     <div class="top">
-      <h6 class="title">{{ habit.Title }}</h6>
-      <h6 class="streak">
+      <h6 class="block title">{{ habit.Title }}</h6>
+      <h6 class="block streak">
         <img class="glitter" src="../assets/glitter.svg" alt="">
         {{ habit.Year }}회 연속
       </h6>
     </div>
     <div class="row">
-      <div v-if="hover" class="block info">{{ habit.Type }}</div>
-      <div v-if="hover" class="block participants">{{  habit.Year }}</div>
+      <div class="block info">{{ habit.Type }}</div>
+      <div class="block participants">{{  habit.Year }}</div>
     </div>
-    <div v-if="hover" class="status">
-      <div class="status-title">최근진행</div>
-      <ul class="list-group list-group-horizontal">
-        <li class="list-group-item"></li>
-        <li class="list-group-item"></li>
-        <li class="list-group-item"></li>
-        <li class="list-group-item"></li>
-        <li class="list-group-item"></li>
-        <li class="list-group-item"></li>
-        <li class="list-group-item"></li>
-      </ul>
-      <div class="status-title">완료율</div>
+    <div class="status">{{ habit.Year/100 }}%</div>
+    <div v-if="hover" class="hover-group">
+      <button class="hover-btn edit">습관 편집</button>
+      <button class="hover-btn delete">삭제</button>
     </div>
-    <button class="done">완료했어요</button>
   </div>
 </template>
 
@@ -53,7 +44,7 @@ export default {
   .habit {
     position: relative;
     width: 40vw;
-    height: 87px;
+    height: 80px;
     margin: 20px;
     padding: 12px;
     border-radius: 12px;
@@ -63,55 +54,68 @@ export default {
     transition: .1s;
     &:hover {
       box-shadow: 0 0px 2px 0 rgb(0, 0, 0, .3);
-      height: 172px;
-    }
-    .streak {
-      color: #4663F6;
-    }
-
-    .row{
-      width: 100%;
-      text-align: left;
+      height: 128px;
     }
     .block{
-      width: 60px;
       display: inline-block;
     }
-    .info {
-      color: #999;
+    .top {
+      position: relative;
+      .streak {
+        margin-left: 16px;
+        color: #4663F6;
+      }
     }
-    .participants {
-      color: #999;
+
+    .row { 
+      width: 100%;
+      text-align: left;
+      .block {
+        width: 60px;
+      }
+      .info {
+        color: #999;
+      }
+      .participants {
+        color: #999;
+      }
     }
-    .done {
+
+    .hover-group {
       position: absolute;
       right: 12px;
       bottom: 12px;
-      background-color: #fcfcfc;
-      border-radius: 8px;
-      padding: 8px 16px;
-      border: .5px solid #f0f0f0;
-      color: $primary;
-      transition: ease-in-out .2s;
-      &:hover {
-        background-color: $primary;
-        color: #fff;
+      .hover-btn {
+        background-color: #fcfcfc;
+        border-radius: 8px;
+        padding: 8px 16px;
+        margin-left: 8px;
+        border: .5px solid #f0f0f0;
+        transition: ease-in-out .2s;
       }
-    }
-    .status {
-      margin-top: 16px;
-      color: #999;
-      .status-title {
-        font-size: 14px;
+      .delete {
+        color: $red;
+        &:hover {
+          background-color: #fff2f2;
+          color: $red;
+        }
       }
+        .edit {
+          color: $primary;
+          &:hover {
+            background-color: $primary;
+            color: #fff;
+          }
+        }
     }
 
-    .list-group-item {
-      border-radius: 20px;
-      margin-left: 4px;
-      font-size: 12px;
-      padding: 5px 10px;
-      color: #999
+
+    .status {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      color: #999;
+      font-size: 16px;
     }
   }
 </style>
