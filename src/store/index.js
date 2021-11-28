@@ -34,6 +34,9 @@ export default createStore({
     },
     setRefreshToken(state, refreshToken){
       state.refreshToken = refreshToken;
+    },
+    setUserEmail(state, userEmail){
+      state.userEmail = userEmail;
     }
   },
   actions:{
