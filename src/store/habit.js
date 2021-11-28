@@ -23,7 +23,7 @@ export default {
   },
   // 비동기
   actions: {
-    async getQuests(context){
+   async getQuests(context){
       console.log("get quest 실행");
       let result = await quest.lookupQuest();
       console.log(result);

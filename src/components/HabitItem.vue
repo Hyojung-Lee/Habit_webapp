@@ -45,7 +45,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "~/scss/main";
-
   .habit {
     position: relative;
     width: 40vw;
