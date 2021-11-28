@@ -11,8 +11,8 @@
       </div>
 
       <div class="form-group">
-        <img v-if="emailValidated" src="../assets/check_valid.png" alt="validated" class="validate">
-        <img v-else src="../assets/check_invalid.png" alt="validated" class="validate">
+        <img v-if="emailValidated" src="../assets/check_valid.png" alt="validated" class="validate"/>
+        <img v-else src="../assets/check_invalid.png" alt="validated" class="validate"/>
         <input type="text" placeholder="email@example.com" class="form-control" v-model="user.id" />
       </div>
       <div class="form-group">
@@ -71,7 +71,15 @@ export default {
       try{
         const response = await auth.login(this.user);
         console.log(this.user);
-        this.$store.dispatch("saveAuth",{userId : this.user.id, authToken: response.data.jwt});
+        this.$store.dispatch("saveAuth",
+        {
+          userId : this.user.id, 
+          accessToken:response.data.accessToken,
+          refreshToken: response.data.refreshToken,
+          userEmail : response.data.userEmail,
+        });
+        // 사용자 정보 모두 가져오기
+        
         this.$router.push("/");
       }catch(e){
         this.alertDialog = true;
@@ -88,9 +96,10 @@ export default {
     handleLogout(){
       this.$store.dispatch("removeAuth");
     },
+    
     //로그인 input form 양식 확인
     validateLogin(value){
-      if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value.id)){
+      if(/^\w+(\[\.-]?\w+)*@\w+(\[\.-]?\w+)*(\.\w{2,3})+$/.test(value.id)){
         this.emailValidated = true;
       }else{
         this.emailValidated = false;
