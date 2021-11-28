@@ -11,13 +11,13 @@ function login(user){ // user : {id : xxx, password :xxxx}
   )
 }
 
-function join(user){
+function join(id, password){
   return axios.post(
     "/api/user/register",
     // json으로 보낼때는 객체로 보낸다.
     {
-      email : user.id,
-      password: user.name
+      email : id,
+      password: password
     }
   )
 }

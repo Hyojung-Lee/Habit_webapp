@@ -30,11 +30,12 @@
         <img v-else src="../assets/check_invalid.png" alt="validated" class="validate">
         <input :disabled='!passwordValidated' type="password" placeholder="비밀번호 확인" class="form-control" v-model="passwordCheck"/>
       </div>
-      <button :disabled="loginDisabled" class="btn btn-primary" v-on:click="handleSignin">가입하기</button>
+      <button :disabled="loginDisabled" class="btn btn-primary" v-on:click="handleSignup">가입하기</button>
   </div>
 </template>
 
 <script>
+import auth from "../apis/auth";
 import Logo from '~/components/Logo'
 
 export default {
@@ -69,8 +70,29 @@ export default {
     },
   },
   methods: {
-    async handleSignin(){
+    async handleSignup(){
+      console.log(this.id);
+      await auth.join(this.id, this.password);
       this.$router.push("/");
+
+
+      try{
+        const response = await auth.join(this.id, this.password);
+        console.log(this.id);
+        // 사용자 정보 모두 가져오기
+        
+        this.$router.push("/");
+      }catch(e){
+        this.alertDialog = true;
+        try{
+          if(e.response.status === 401){
+            this.alertDialogMessage = "회원가입 실패";
+            console.log("회원가입 실패");
+          }
+        }catch(err){
+          this.alertDialogMessage = "알 수 없는 오류가 발생했습니다.";
+        }
+      }
     },
     validateID(value){
       if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)){
