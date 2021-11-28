@@ -7,12 +7,12 @@
       <h6 class="block title">{{ habit.title}}</h6>
       <h6 class="block streak">
         <img class="glitter" src="../assets/glitter.svg" alt=""/>
-        {{ habit.accomplishCount/habit.totalAlarmCount * 100}} % Completed
+        {{ habit.accomplishCount/habit.totalAlarmCount * 100}} % ({{ habit.accomplishCount }}/{{ habit.totalAlarmCount }})
       </h6>
     </div>
     <div class="row">
-      <div class="block info">{{ habit.term }}</div>
-      <div class="block participants">{{ habit.cycle }}</div>
+      <div class="block info">{{ habit.term }} · {{ habit.cycle }} · {{ habit.accomplishable}}</div>
+      <!-- <div class="block participants">{{ habit.cycle }}</div> -->
     </div>
     <div v-if="hover" class="hover-group">
       <button class="hover-btn edit">습관 편집</button>
@@ -55,7 +55,7 @@ export default {
     border-radius: 12px;
     background-color: #fff;
     z-index: 3;
-    box-shadow: 0 8px 12px 0 rgb(0, 0, 0, .1);
+    box-shadow: 0 6px 10px 0 rgb(0, 0, 0, .06);
     transition: .1s;
     &:hover {
       box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.3);
@@ -76,7 +76,7 @@ export default {
       width: 100%;
       text-align: left;
       .block {
-        width: 60px;
+        width: 200px;
       }
       .info {
         color: #999;
