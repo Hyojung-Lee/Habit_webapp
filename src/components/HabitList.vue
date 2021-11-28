@@ -48,6 +48,11 @@ export default {
     });
     console.log("실행한다고");
     console.log(this.habits);    
+  },
+  watch:{
+    habits: function(){
+      
+    }
   }
 }
 </script>

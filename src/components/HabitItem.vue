@@ -32,6 +32,7 @@ export default {
   methods: {
     deleteQuest() {
       quest.deleteQuest(this.habit.id);
+      location.reload();
     }
   },
   props: {
