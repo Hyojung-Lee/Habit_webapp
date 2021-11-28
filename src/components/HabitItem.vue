@@ -53,7 +53,7 @@ export default {
     box-shadow: 0 8px 12px 0 rgb(0, 0, 0, .1);
     transition: .1s;
     &:hover {
-      box-shadow: 0 0px 2px 0 rgb(0, 0, 0, .3);
+      box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.3);
       height: 128px;
     }
     .block{

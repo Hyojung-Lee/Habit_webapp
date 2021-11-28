@@ -30,7 +30,7 @@
         <img v-else src="../assets/check_invalid.png" alt="validated" class="validate">
         <input :disabled='!passwordValidated' type="password" placeholder="비밀번호 확인" class="form-control" v-model="passwordCheck"/>
       </div>
-      <button :disabled="loginDisabled" class="btn btn-primary" >가입하기</button>
+      <button :disabled="loginDisabled" class="btn btn-primary" v-on:click="handleSignin">가입하기</button>
   </div>
 </template>
 
@@ -53,24 +53,25 @@ export default {
       loginDisabled : true,
     }
   },
-  computed() {
-      if(this.emailValidated && this.passwordValidated && this.passwordCheckValidated) {
-        this.loginDisabled = false;
-      }else this.loginDisabled = true;
-  },
   watch: {
     id(value) {
       this.validateID(value);
+      this.SignupAvail();
     },
     password(value) {
       this.validatePW(value);
       this.validatePWC(value);
+      this.SignupAvail();
     },
     passwordCheck(value) {
       this.validatePWC(value);
+      this.SignupAvail();
     },
   },
   methods: {
+    async handleSignin(){
+      this.$router.push("/");
+    },
     validateID(value){
       if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)){
         this.emailValidated = true;
@@ -88,7 +89,10 @@ export default {
         this.passwordCheckValidated = true;
       }else this.passwordCheckValidated = false;
     },
-    handleSignup(){
+    SignupAvail(){
+      if(this.emailValidated && this.passwordValidated && this.passwordCheckValidated) {
+        this.loginDisabled = false;
+      }else this.loginDisabled = true;
     }
   }
 }

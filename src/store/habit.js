@@ -25,7 +25,7 @@ export default {
   actions: {
     async searchHabits(context, payload) {
       const OMDB_API_KEY = '629d18fc'
-      const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=dog&page=1`)
+      const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=habit`)
       const { Search, totalResults } = res.data
       context.commit('updateState',{
         habits: Search
