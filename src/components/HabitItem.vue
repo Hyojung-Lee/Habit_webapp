@@ -4,29 +4,34 @@
     @mouseover="hover = true"
     @mouseleave="hover = false">
     <div class="top">
-      <h6 class="block title">{{ habit.Title }}</h6>
+      <h6 class="block title">{{ habit.title}}</h6>
       <h6 class="block streak">
-        <img class="glitter" src="../assets/glitter.svg" alt="">
-        {{ habit.Year }}회 연속
+        <img class="glitter" src="../assets/glitter.svg" alt=""/>
+        {{ habit.accomplishCount/habit.totalAlarmCount * 100}} % Completed
       </h6>
     </div>
     <div class="row">
-      <div class="block info">{{ habit.Type }}</div>
-      <div class="block participants">{{  habit.Year }}</div>
+      <div class="block info">{{ habit.term }}</div>
+      <div class="block participants">{{ habit.cycle }}</div>
     </div>
-    <div class="status">{{ habit.Year/100 }}%</div>
     <div v-if="hover" class="hover-group">
       <button class="hover-btn edit">습관 편집</button>
-      <button class="hover-btn delete">삭제</button>
+      <button @click="deleteQuest" class="hover-btn delete">삭제</button>
     </div>
   </div>
 </template>
 
 <script>
+import quest from '../apis/quest';
 export default {
   data() {
     return {
       hover: false
+    }
+  },
+  methods: {
+    deleteQuest() {
+      quest.deleteQuest(this.habit.id);
     }
   },
   props: {

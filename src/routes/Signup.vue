@@ -8,26 +8,26 @@
           <router-link
             to="login"
             class="back-btn">
-            <img class="back-btn-icon" src="../assets/arrow_back.png" alt="back">
+            <img class="back-btn-icon" src="../assets/arrow_back.png" alt="back"/>
           </router-link>
         <h2>회원가입</h2>
         <p>HABITS로 새로운 습관을 성공적으로 들여보세요!</p>
       </div>
       <span class="info">이메일</span>
       <div class="form-group">
-        <img v-if="emailValidated" src="../assets/check_valid.png" alt="validated" class="validate">
-        <img v-else src="../assets/check_invalid.png" alt="validated" class="validate">
+        <img v-if="emailValidated" src="../assets/check_valid.png" alt="validated" class="validate"/>
+        <img v-else src="../assets/check_invalid.png" alt="validated" class="validate"/>
         <input type="text" placeholder="email@example.com" class="form-control" v-model="id"/>
       </div>
       <span class="info">비밀번호</span>
       <div class="form-group">
-        <img v-if="passwordValidated" src="../assets/check_valid.png" alt="validated" class="validate">
-        <img v-else src="../assets/check_invalid.png" alt="validated" class="validate">
+        <img v-if="passwordValidated" src="../assets/check_valid.png" alt="validated" class="validate"/>
+        <img v-else src="../assets/check_invalid.png" alt="validated" class="validate"/>
         <input type="password" placeholder="비밀번호" class="form-control" v-model="password"/>
       </div>
       <div class="form-group">
-        <img v-if="passwordCheckValidated" src="../assets/check_valid.png" alt="validated" class="validate">
-        <img v-else src="../assets/check_invalid.png" alt="validated" class="validate">
+        <img v-if="passwordCheckValidated" src="../assets/check_valid.png" alt="validated" class="validate"/>
+        <img v-else src="../assets/check_invalid.png" alt="validated" class="validate"/>
         <input :disabled='!passwordValidated' type="password" placeholder="비밀번호 확인" class="form-control" v-model="passwordCheck"/>
       </div>
       <button :disabled="loginDisabled" class="btn btn-primary" v-on:click="handleSignup">가입하기</button>

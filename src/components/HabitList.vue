@@ -3,7 +3,7 @@
     <div class="inner">
       <HabitItem
       v-for="habit in habits"
-      :key="habit.imdbID"
+      :key="habit.id"
       :habit="habit"/>
     </div>
   </div>
@@ -11,25 +11,43 @@
 
 <script>
 import HabitItem from '~/components/HabitItem'
-
+import quest from '../apis/quest'
 export default {
   components: {
     HabitItem
   },
-
-  computed: {
-    habits() {
-      return this.$store.state.habit.habits
+  data() {
+    return {
+      habits: []
     }
   },
+  // computed: {
+  //   habits() {
+  //     return this.$store.state.habits
+  //   }
+  // },
   methods: {
     async apply() {
       // this.$store.dispatch('habit/searchHabits')
-      this.$store.dispatch('habit/getQuests');
-    }
+      await this.$store.dispatch('habit/getQuests');
+    },
   },
-  beforeMount() {
-    this.apply()
+  // beforeMount() {
+  //   this.apply();
+  //   this.habits = this.$store.state.habits;
+  //   console.log(this.$store.state.habits);
+  //   console.log("before mount");
+  //   console.log(this.habits);
+  // },
+  created(){
+    quest.lookupQuest()
+    .then(response => {
+      console.log("실행1231");
+      console.log(response.data.questResponses);
+      this.habits = response.data.questResponses;
+    });
+    console.log("실행한다고");
+    console.log(this.habits);    
   }
 }
 </script>
