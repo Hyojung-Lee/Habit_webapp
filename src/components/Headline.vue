@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img class="illust" src="../assets/headline2.png" alt="headline1img">
+    <img class="illust" src="../assets/headline2.png" alt="headline1img"/>
     <h2>습관을<br>확인하세요.</h2>
     <p>HABITS로 새로운 습관을 성공적으로 들여보세요!</p>
     

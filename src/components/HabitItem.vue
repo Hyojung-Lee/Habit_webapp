@@ -6,7 +6,7 @@
     <div class="top">
       <h6 class="title">{{ habit.Title }}</h6>
       <h6 class="streak">
-        <img class="glitter" src="../assets/glitter.svg" alt="">
+        <img class="glitter" src="../assets/glitter.svg" alt=""/>
         {{ habit.Year }}회 연속
       </h6>
     </div>

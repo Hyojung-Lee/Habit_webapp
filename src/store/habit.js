@@ -1,5 +1,5 @@
-import axios from 'axios'
-
+// import axios from 'axios'
+import quest from '../apis/quest'
 export default {
   // module
   namespaced: 'true',
@@ -23,12 +23,21 @@ export default {
   },
   // 비동기
   actions: {
-    async searchHabits(context, payload) {
-      const OMDB_API_KEY = '629d18fc'
-      const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=dog&page=1`)
-      const { Search, totalResults } = res.data
+    // async searchHabits(context, payload) {
+    //   const OMDB_API_KEY = '629d18fc'
+    //   const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=dog&page=1`)
+    //   const { Search, totalResults } = res.data
+    //   context.commit('updateState',{
+    //     habits: Search
+    //   })
+    // },
+    async getQuests(context){
+      console.log("get quest 실행");
+      let result = await quest.lookupQuest();
+      console.log(result);
+      const {Search} = result.data;
       context.commit('updateState',{
-        habits: Search
+        quests: Search
       })
     }
   }

@@ -1,12 +1,12 @@
 import axios from "axios"
 
 // 기본 경로 설정
-// axios.defaults.baseURL = "http://localhost";
-axios.defaults.baseURL = 'https://8a237c10-6531-4bb5-a9b9-b717f7967a4f.mock.pstmn.io';
-// axios.defaults.baseURL = 'https://edd03df4-7356-4ce5-b06b-febccc802a52.mock.pstmn.io';
+axios.defaults.baseURL = " http://3.38.166.143:8080";
+
+// axios.defaults.baseURL="https://b9d327dd-4207-4bf9-8dec-418b355dd8bb.mock.pstmn.io";
 // 요청 http에 Authorization 헤더 추가, 값은 JWT로 설정
-function addAuthHeader(authToken){
-  axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+function addAuthHeader(accessToken){
+  axios.defaults.headers.common['Authorization'] = `${accessToken}`;
 }
 
 // 요청 http에 Authorization 헤더 제거

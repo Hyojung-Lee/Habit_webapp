@@ -24,7 +24,8 @@ export default {
   },
   methods: {
     async apply() {
-      this.$store.dispatch('habit/searchHabits')
+      // this.$store.dispatch('habit/searchHabits')
+      this.$store.dispatch('habit/getQuests');
     }
   },
   beforeMount() {
