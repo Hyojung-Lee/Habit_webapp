@@ -16,10 +16,12 @@
         <input type="text" placeholder="email@example.com" class="form-control" v-model="user.id" />
       </div>
       <div class="form-group">
-        <input type="password" placeholder="비밀번호 입력" class="form-control" v-model="user.password"/>
+        <input type="password" placeholder="비밀번호 입력" class="form-control" @keyup.enter="handleLogin" v-model="user.password"/>
       </div>
       <button :disabled='loginDisabled' class="btn btn-primary" v-on:click="handleLogin">로그인</button>
-      <button class="btn btn-sub">회원가입</button>
+      <router-link 
+        to="signup"
+        class="btn btn-sub" >회원가입</router-link>
       <alert-dialog :message="alertDialogMessage" :loading="loading" v-if="alertDialog" @close="alertDialog = false" />
   </div>
 </template>

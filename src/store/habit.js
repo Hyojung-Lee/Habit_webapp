@@ -36,6 +36,7 @@ export default {
       let result = await quest.lookupQuest();
       console.log(result);
       const {Search} = result.data;
+
       context.commit('updateState',{
         quests: Search
       })
